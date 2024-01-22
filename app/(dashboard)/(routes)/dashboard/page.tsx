@@ -1,5 +1,7 @@
 import { Button } from "@/components/ui/button";
 
-export default function Home() {
+const DashboardPage = () => {
   return <Button variant="secondary">Click</Button>;
-}
+};
+
+export default DashboardPage;
