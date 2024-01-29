@@ -15,6 +15,7 @@ import {
 import { usePathname } from "next/navigation";
 
 import { cn } from "@/lib/utils";
+import { FreeCounter } from "./free-counter";
 
 const montserrat = Montserrat({ weight: "600", subsets: ["latin"] });
 
@@ -96,6 +97,7 @@ export const Sidebar = ({ apiLimitCount = 0 }: { apiLimitCount: number }) => {
           ))}
         </div>
       </div>
+      <FreeCounter apiLimitCount={apiLimitCount} />
     </div>
   );
 };
