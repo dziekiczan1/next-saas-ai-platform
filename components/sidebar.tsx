@@ -63,7 +63,11 @@ const routes = [
   },
 ];
 
-export const Sidebar = ({ apiLimitCount = 0 }: { apiLimitCount: number }) => {
+export interface SidebarProps {
+  apiLimitCount: number;
+}
+
+export const Sidebar = ({ apiLimitCount = 0 }: SidebarProps) => {
   const pathname = usePathname();
 
   return (

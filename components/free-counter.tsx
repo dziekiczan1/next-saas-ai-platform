@@ -3,12 +3,19 @@ import { useEffect, useState } from "react";
 
 import { MAX_FREE_COUNTS } from "@/constants";
 import { Card, CardContent } from "@/components/ui/card";
+import { SidebarProps } from "./sidebar";
 
-export const FreeCounter = ({
-  apiLimitCount = 0,
-}: {
-  apiLimitCount: number;
-}) => {
+export const FreeCounter = ({ apiLimitCount = 0 }: SidebarProps) => {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return null;
+  }
+
   return (
     <div className="px-3">
       <Card className="bg-white/10 border-0">
