@@ -5,15 +5,10 @@ import { MAX_FREE_COUNTS } from "@/constants";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
+import { SidebarProps } from "./sidebar";
 import { useProModal } from "@/hooks/use-pro-modal";
 
-export const FreeCounter = ({
-  isPro = false,
-  apiLimitCount = 0,
-}: {
-  isPro: boolean;
-  apiLimitCount: number;
-}) => {
+export const FreeCounter = ({ apiLimitCount = 0 }: SidebarProps) => {
   const [mounted, setMounted] = useState(false);
   const proModal = useProModal();
 
@@ -22,10 +17,6 @@ export const FreeCounter = ({
   }, []);
 
   if (!mounted) {
-    return null;
-  }
-
-  if (isPro) {
     return null;
   }
 
