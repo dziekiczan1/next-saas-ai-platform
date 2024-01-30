@@ -7,6 +7,7 @@ import { MessageSquare } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { toast } from "react-hot-toast";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 import { Heading } from "@/components/heading";
@@ -18,9 +19,9 @@ import { Empty } from "@/components/empty";
 import { UserAvatar } from "@/components/user-avatar";
 import { BotAvatar } from "@/components/bot-avatar";
 import { cn } from "@/lib/utils";
+import { useProModal } from "@/hooks/use-pro-modal";
 
 import { formSchema } from "./constants";
-import { useProModal } from "@/hooks/use-pro-modal";
 
 interface ChatCompletionRequestMessage {
   role: "user";
@@ -59,6 +60,8 @@ const ConversationPage = () => {
     } catch (error: any) {
       if (error?.response?.status === 403) {
         proModal.onOpen();
+      } else {
+        toast.error("Something went wrong.");
       }
     } finally {
       router.refresh();
